@@ -1,14 +1,16 @@
 require "rack"
 
 class Greeter
-  def initialize
-    @routes = {}
-    @routes["/"] = [ 200, {}, ["Hello World"] ]
-    @routes["/ruby"] = [ 200, {}, ["Hello Ruby"] ]
+  @routes = {}                # class instance variable
+  @routes["/"] = [ 200, {}, ["Hello World"] ]
+  @routes["/ruby"] = [ 200, {}, ["Hello Ruby"] ]
+
+  def self.routes
+    @routes
   end
 
   def call(env)
-    response = @routes[env["REQUEST_PATH"]]
+    response = self.class.routes[env["REQUEST_PATH"]]
     return [ 404, {}, ["Not Found"] ] if response.nil?
     response
   end
