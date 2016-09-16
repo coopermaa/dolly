@@ -1,13 +1,11 @@
 require "base"
 
-class Greeter < Base
-  get "/" do
-    "Hello World"
-  end
-
-  post "/" do
-    "POST to /"
-  end
+get "/" do
+  "Hello World"
 end
 
-Rack::Server.start app: Greeter.new, Port: ENV["PORT"] || 8080
+post "/" do
+  "POST to /"
+end
+
+Rack::Server.start app: Dolly::Base.new, Port: ENV["PORT"] || 8080
