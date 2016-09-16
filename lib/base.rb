@@ -14,11 +14,15 @@ module Dolly
       end
     end
 
+    def params
+      @request.params
+    end
+
     def call(env)
       @request = Rack::Request.new(env)
       block = self.class.routes[@request.request_method][@request.path]
       return Rack::Response.new("Not Found", 404) if block.nil?
-      Rack::Response.new block.call
+      Rack::Response.new instance_eval(&block)
     end
   end
 
