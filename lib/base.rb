@@ -1,11 +1,11 @@
 require "rack"
 
 class Base
-  def self.routes
-    @routes ||= Hash.new { |hash, key| hash[key] = {} }
-  end
-
   class << self
+    def routes
+      @routes ||= Hash.new { |hash, key| hash[key] = {} }
+    end
+
     %w[GET POST PATCH PUT DELETE HEAD OPTIONS].each do |verb|
       define_method(verb.downcase) do |path, &block|
         routes[verb][path] = block
