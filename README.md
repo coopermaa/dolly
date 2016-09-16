@@ -38,5 +38,5 @@ ruby -Ilib examples/app.rb
 
 ## Note
 
-There is already a Ruby gem called [dolly](https://github.com/amco/dolly (Object-Oriented interface for CouchDB), so I didn't push my gem to Rubygems.
+There is already a Ruby gem called [dolly](https://github.com/amco/dolly) (Object-Oriented interface for CouchDB), so I didn't push my gem to Rubygems.
 To use this micro framework, please use source code directly.
