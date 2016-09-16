@@ -11,7 +11,7 @@ class Base
 
   def call(env)
     block = self.class.routes[env["REQUEST_PATH"]]
-    return [ 404, {}, ["Not Found"] ] if block.nil?
-    block.call
+    return Rack::Response.new("Not Found", 404) if block.nil?
+    Rack::Response.new block.call
   end
 end

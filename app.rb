@@ -2,11 +2,11 @@ require "base"
 
 class Greeter < Base
   get "/" do
-    [ 200, {}, ["Hello World"] ]
+    "Hello World"
   end
 
   get "/ruby" do
-    [ 200, {}, ["Hello Ruby"] ]
+    "Hello Ruby"
   end
 end
 
