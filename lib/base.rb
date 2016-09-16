@@ -5,12 +5,12 @@ class Base
     @routes ||= Hash.new { |hash, key| hash[key] = {} }
   end
 
-  def self.get(path, &block)
-    routes["GET"][path] = block
-  end
-
-  def self.post(path, &block)
-    routes["POST"][path] = block
+  class << self
+    %w[GET POST PATCH PUT DELETE HEAD OPTIONS].each do |verb|
+      define_method(verb.downcase) do |path, &block|
+        routes[verb][path] = block
+      end
+    end
   end
 
   def call(env)
