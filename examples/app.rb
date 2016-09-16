@@ -1,11 +1,11 @@
-require "base"
+require "dolly"
 
 get "/" do
   "Hello World"
 end
 
 post "/" do
-  "POST to /"
+  "Hello HTTP POST"
 end
 
 get "/hello" do
