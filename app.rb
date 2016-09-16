@@ -5,8 +5,8 @@ class Greeter < Base
     "Hello World"
   end
 
-  get "/ruby" do
-    "Hello Ruby"
+  post "/" do
+    "POST to /"
   end
 end
 
